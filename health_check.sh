@@ -1,6 +1,6 @@
 #!/bin/bash
 
-URL="http://localhost:5000/health"
+URL="http://localhost:8080/health"
 
 # store the whole response with the status at the and
 HTTP_RESPONSE=$(curl --silent --write-out "HTTPSTATUS:%{http_code}" -X GET $URL)
