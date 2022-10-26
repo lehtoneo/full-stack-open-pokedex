@@ -1,6 +1,6 @@
 #!/bin/bash
 
-URL="https://ossi-pokedex.fly.dev/health"
+URL="http://localhost:5000/health"
 
 # store the whole response with the status at the and
 HTTP_RESPONSE=$(curl --silent --write-out "HTTPSTATUS:%{http_code}" -X GET $URL)
@@ -19,3 +19,4 @@ if [ ! $HTTP_BODY == "ok"  ]; then
 fi
 echo "STATUS: $HTTP_STATUS"
 echo "HEALTH CHECK OK"
+exit 0
