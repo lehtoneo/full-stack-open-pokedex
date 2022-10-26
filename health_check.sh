@@ -12,6 +12,7 @@ HTTP_BODY=$(echo $HTTP_RESPONSE | sed -e 's/HTTPSTATUS\:.*//g')
 HTTP_STATUS=$(echo $HTTP_RESPONSE | tr -d '\n' | sed -e 's/.*HTTPSTATUS://')
 
 # example using the status
+
 if [ ! $HTTP_BODY == "ok"  ]; then
   echo "Error [HTTP body: $HTTP_BODY]"
   echo "[HTTP status: $HTTP_STATUS]"
