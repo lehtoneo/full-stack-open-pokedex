@@ -11,6 +11,7 @@ env:
   FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
 jobs:
   simple_deployment_pipeline:
+    if: ${{ github.event_name != 'push'}}
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
@@ -36,6 +37,14 @@ jobs:
           build: npm run build
           start: npm run start-prod
           wait-on: http://localhost:5000
+      - name: Send discord webhook message
+        uses: rjstone/discord-webhook-notify@v1
+        if: failure()
+        with:
+            severity: error
+            color: '#FF0000'
+            details: 'Something failed on pre-deployment.'
+            webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
   deploy:
     if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message, ' '), '#skip') }}
     needs: simple_deployment_pipeline
@@ -47,6 +56,15 @@ jobs:
       
       - name: Deploy
         run: flyctl deploy --remote-only
+
+      - name: Send discord webhook message
+        uses: rjstone/discord-webhook-notify@v1
+        if: success()
+        with:
+            severity: info
+            color: '#00FF00'
+            details: 'New version deployed.'
+            webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
 
   tag_release:
     if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message, ' '), '#skip') }}
