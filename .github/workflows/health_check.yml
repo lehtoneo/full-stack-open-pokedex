@@ -5,7 +5,7 @@ on:
     branches:
       - master
 jobs:
-  simple_deployment_pipeline:
+  health_check:
     runs-on: ubuntu-20.04
     steps:
   - name: Check the deployed service URL
