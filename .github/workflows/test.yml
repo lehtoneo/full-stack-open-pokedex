@@ -27,5 +27,5 @@ jobs:
           COMMIT_MESSAGES_JOINED: ${{ join(github.event.commits.*.message, ' ') }}
         run: echo "$COMMIT_MESSAGES_JOINED"
       - name: does commit message not contain hashtag skip
-        run: echo ${{ !contains($COMMIT_MESSAGES_JOINED, '#skip') }}
+        run: echo ${{ !contains('$COMMIT_MESSAGES_JOINED', '#skip') }}
 
