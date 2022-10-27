@@ -43,16 +43,19 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
+
       - name: Deploy
-      - uses: superfly/flyctl-actions/setup-flyctl@master
-      - run: flyctl deploy --remote-only
+          uses: superfly/flyctl-actions/setup-flyctl@master
+          run: flyctl deploy --remote-only
 
   tag_release:
     if: ${{ github.event_name == 'push' }}
     needs: [deploy]
     name: Tag release
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
+
       - name: Bump version and push tag
         uses: anothrNick/github-tag-action@1.36.0
         env:
