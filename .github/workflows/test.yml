@@ -28,4 +28,3 @@ jobs:
         run: echo "$COMMIT_MESSAGES_JOINED"
       - name: does commit message not contain hashtag skip
         run: echo ${{ !contains('$COMMIT_MESSAGES_JOINED', '#skip') }}
-
