@@ -28,4 +28,3 @@ jobs:
         run: echo "$COMMIT_MESSAGES_JOINED"
 
 
-
