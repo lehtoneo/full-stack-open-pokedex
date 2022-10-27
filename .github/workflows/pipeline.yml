@@ -43,9 +43,9 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
-
+      - uses: superfly/flyctl-actions/setup-flyctl@master
+      
       - name: Deploy
-        uses: superfly/flyctl-actions/setup-flyctl@master
         run: flyctl deploy --remote-only
 
   tag_release:
