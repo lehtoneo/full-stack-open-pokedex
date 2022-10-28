@@ -1,6 +1,12 @@
-## Link to ex 11.20 repo
+## Links 
+
+### Ex 11.20 repo
 
 [https://github.com/lehtoneo/team-app](https://github.com/lehtoneo/team-app)
+
+### Fly deployment
+
+[https://ossi-pokedex.fly.dev/](https://ossi-pokedex.fly.dev/)
 
 # Full Stack open CI/CD
 
